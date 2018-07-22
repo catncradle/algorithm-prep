@@ -14,7 +14,7 @@ function countSteps(n) {
   // each permutation has 3 possible steps, and this is covered by our recursive calls, this is basically fibonacci style.
   return countSteps(n - 3) + countSteps(n - 2) + countSteps(n - 1);
 }
-
+// optimized memoization solution
 function countSteps(n, memo) {
   memo = memo || {};
 
