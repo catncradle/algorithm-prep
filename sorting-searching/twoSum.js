@@ -29,19 +29,19 @@ function indexOfSum(arr, target) {
 }
 
 // Single loop with memoized set, works on unsorted arrays
-function twoSum(numbers,target){
+function twoSum(numbers, target) {
   // Create empty set
   let compliments = new Set();
 
-  for(let i = 0; i < numbers.length; i++) {
-    if(compliments.has(numbers[i])){
+  for (let i = 0; i < numbers.length; i++) {
+    if (compliments.has(numbers[i])) {
       // Return true if current number in array is compliment to previous number
-      return true
+      return true;
     } else {
       // Add compliment of current number to the set
-      compliments.add(target - numbers[i])
+      compliments.add(target - numbers[i]);
     }
   }
   // Return false by default
-  return false
+  return false;
 }
