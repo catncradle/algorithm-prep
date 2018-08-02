@@ -18,7 +18,7 @@ function findMissingNum(arr){
       else if (i-1 === 0) return 0;
       else return findMissingNum(arr.slice(0,i))
     }
-    else if (i === arr[i]){ // no missing number of missing number is on right side
+    else if (i === arr[i]){ // no missing number or missing number is on right side
       temp = i;
       i += Math.floor(arr.length-1-i) //search right side;
       if (i === temp) return i+1
