@@ -13,23 +13,4 @@
 //   this.next = null;
 // }
 //
-function removeKFromList(l, k) {
-  // first, create a new list node
-  let list = new ListNode(0);
-  // set a pointer to the newly created  list
-  let temp = list;
-
-  while (l) {
-    // if the current value isnt the same, then add the value to temp
-    if (l.value !== k) {
-      temp.next = l;
-      temp = temp.next;
-    }
-    // if the value is the same then it wont be added, just move the pointer along
-    l = l.next;
-  }
-  // set the final next value to be null
-  temp.next = null;
-  // return the next val, aka value after dummy head
-  return list.next;
-}
+function removeKFromList(l, k) {}

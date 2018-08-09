@@ -30,21 +30,4 @@
  * @param {TreeNode} t2
  * @return {TreeNode}
  */
-var mergeTrees = function(t1, t2) {
-  //     if there are no nodes entered, just stop and return null as the branch
-  if (!t1 && !t2) {
-    return null;
-  }
-  //     if either incoming nodes are null instantiate them as nodes with value 0
-  if (!t1) {
-    t1 = new TreeNode(0);
-  }
-  if (!t2) {
-    t2 = new TreeNode(0);
-  }
-  //     make a new node/tree
-  let newTree = new TreeNode(t1.val + t2.val);
-  newTree.left = mergeTrees(t1.left, t2.left);
-  newTree.right = mergeTrees(t1.right, t2.right);
-  return newTree;
-};
+var mergeTrees = function(t1, t2) {};
