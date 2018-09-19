@@ -1,0 +1,86 @@
+const Root = {
+  value: 'A',
+  children: [
+    {
+      value: 'B',
+      children: [{
+        value: 'E',
+        children: []
+      }]
+    },
+    {
+      value: 'C',
+      children: [{
+        value: 'F',
+        children: []
+      }]
+    },
+    {
+      value: 'D',
+      children: [{
+        value: 'G',
+        children: []
+      },{
+        value: 'H',
+        children: []
+      }]
+    }
+  ]
+}
+/// Depth first Searches
+function depthFirstPreOrder(node,cb) {
+  cb(node.value)
+  node.children.forEach( (child) => {
+    depthFirstPreOrder(child,cb)
+  })
+}
+function iterativeDepthFirstPreOrder (node, cb) {
+  let stack = [node]
+
+  while(stack.length) {
+    let currNode = stack.pop()
+    cb(currNode.value)
+    for (let i = currNode.children.length - 1; i >= 0; i-- ) {
+      let childNode = currNode.children[i]
+      stack.push(childNode)
+    }
+  }
+}
+function iterativeDepthFirstPostOrder(node, cb) {
+  let stack = [node]
+  let evalOrder = []
+
+  while(stack.length) {
+    let currNode = stack.pop()
+    evalOrder.push(currNode)
+    currNode.children.forEach( child => {
+      stack.push(child)
+    })
+  }
+
+  for (let i = evalOrder.length - 1; i >= 0; i--) {
+    let evalNode = evalOrder[i]
+    cb(evalNode.value)
+  }
+}
+///// Breadth First searches
+function breadthFirst(node, cb) {
+  recursiveBreadthFirst([node], cb) 
+}
+function recursiveBreadthFirst(nodes, cb) {
+  if(nodes.length === 0) return
+  let currNode = nodes.shift()
+  cb(currNode.value)
+  nodes.push(...currNode.children)
+
+  recursiveBreadthFirst(nodes, cb) 
+}
+
+console.log('// Recursive Breadth first search')
+breadthFirst(Root, console.log)
+console.log('// Depth First Search Pre-Order')
+depthFirstPreOrder(Root,console.log)
+console.log('// Iterative Depth First Search Pre-Order')
+iterativeDepthFirstPreOrder(Root,console.log)
+console.log('// Iterative Depth First Search Post-Order')
+iterativePostOrder(Root,console.log)
